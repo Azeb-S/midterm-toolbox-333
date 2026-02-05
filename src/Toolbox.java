@@ -105,17 +105,12 @@ public class Toolbox {
       throw new IllegalArgumentException("Node cannot be null.");
 
     }
-    // if there is a previous link node link to the next node
     if (node.prev != null) {
       node.prev.next = node.next;
     }
-
-    // if there is a next node, link it to the previous node
-
     if (node.next != null) {
       node.next.prev = node.prev;
     }
-
     // Disconnect the node
     node.prev = null;
     node.next = null;
@@ -134,6 +129,17 @@ public class Toolbox {
     if (head == null || n < 0) {
       throw new IllegalArgumentException("Head cannot be null and n cannot be negative.");
     }
+    SingleNode current = head;
+    int index = 0;
+    while (current != null) {
+      if (index == n) {
+        return current;
+      }
+      current = current.next;
+      index++;
+
+    }
+
     return null;
   }
 
