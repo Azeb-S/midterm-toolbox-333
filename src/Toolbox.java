@@ -244,6 +244,17 @@ public class Toolbox {
       throw new IllegalArgumentException("Queue cannot be null and k cannot be negative.");
     }
 
+    int size = queue.size();
+    if (size == 0)
+      return;
+
+    int rotations = k % size; // handle k > size
+
+    for (int i = 0; i < rotations; i++) {
+      queue.add(queue.remove());
+
+    }
+
   }
 
   /**
