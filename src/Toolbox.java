@@ -323,6 +323,22 @@ public class Toolbox {
     if (scores == null || scores.isEmpty()) {
       throw new IllegalArgumentException("Scares cannot be null or empty");
     }
-    return null;
+
+    String bestName = null;
+    int bestScore = Integer.MIN_VALUE;
+
+    for (String name : scores.keySet()) {
+      int score = scores.get(name);
+
+      if (bestName == null ||
+          score > bestScore ||
+          (score == bestScore && name.compareTo(bestName) < 0)) {
+
+        bestScore = score;
+        bestName = name;
+      }
+    }
+
+    return bestName;
   }
 }
